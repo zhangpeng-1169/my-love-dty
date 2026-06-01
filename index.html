@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>童瑶，生日快乐 · 我们的甜蜜纪念</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --pink: #F8E1E8;
+      --pink-deep: #F0C4D4;
+      --rose-gold: #D4A574;
+      --rose-gold-light: #E8C9A8;
+      --lavender: #E8E0F0;
+      --lavender-deep: #D4C5E8;
+      --warm-white: #FFFBF7;
+      --cream: #FFF5EB;
+      --cream-dark: #F5EBE0;
+      --text: #5C4A52;
+      --text-light: #8A7580;
+      --shadow: rgba(180, 140, 160, 0.12);
+      --shadow-hover: rgba(180, 140, 160, 0.22);
+      --radius: 20px;
+      --transition: 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--warm-white);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── Hero Banner ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem 1.5rem 4rem;
+      background: linear-gradient(145deg,
+        var(--cream) 0%,
+        var(--pink) 25%,
+        var(--lavender) 55%,
+        var(--warm-white) 80%,
+        var(--cream-dark) 100%);
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 20%, rgba(232, 196, 168, 0.25) 0%, transparent 50%),
+                  radial-gradient(ellipse at 70% 80%, rgba(212, 197, 232, 0.2) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: var(--rose-gold-light);
+      border-radius: 50%;
+      opacity: 0;
+      animation: floatUp linear infinite;
+    }
+
+    @keyframes floatUp {
+      0%   { opacity: 0; transform: translateY(100vh) scale(0); }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.3; }
+      100% { opacity: 0; transform: translateY(-10vh) scale(1); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 0.45rem 1.4rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(212, 165, 116, 0.3);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      color: var(--rose-gold);
+      margin-bottom: 2rem;
+      animation: fadeDown 1.2s ease both;
+    }
+
+    .hero-title {
+      font-size: clamp(2.6rem, 8vw, 4.8rem);
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      background: linear-gradient(135deg, #C4956A 0%, #D4A574 30%, #B88AAB 70%, #C4956A 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeDown 1.2s ease 0.15s both, shimmer 6s ease infinite;
+      line-height: 1.25;
+    }
+
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% center; }
+      50%      { background-position: 200% center; }
+    }
+
+    .hero-subtitle {
+      margin-top: 1.2rem;
+      font-size: clamp(1rem, 2.8vw, 1.25rem);
+      font-weight: 300;
+      color: var(--text-light);
+      letter-spacing: 0.06em;
+      animation: fadeDown 1.2s ease 0.3s both;
+    }
+
+    .hero-divider {
+      width: 48px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--rose-gold), transparent);
+      margin: 2rem auto;
+      animation: fadeDown 1.2s ease 0.45s both;
+    }
+
+    .hero-date {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      letter-spacing: 0.12em;
+      animation: fadeDown 1.2s ease 0.55s both;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-light);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      animation: fadeDown 1.2s ease 0.8s both;
+    }
+
+    .scroll-hint-line {
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, var(--rose-gold-light), transparent);
+      animation: scrollPulse 2s ease infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50%      { opacity: 1; transform: scaleY(1.15); }
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Section Common ── */
+    section {
+      padding: 5rem 1.5rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      display: block;
+      text-align: center;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      color: var(--rose-gold);
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--text);
+      margin-bottom: 0.8rem;
+    }
+
+    .section-desc {
+      text-align: center;
+      font-size: 0.95rem;
+      color: var(--text-light);
+      max-width: 480px;
+      margin: 0 auto 3.5rem;
+      font-weight: 300;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Timeline ── */
+    .timeline-section {
+      background: linear-gradient(180deg, var(--warm-white) 0%, var(--cream) 50%, var(--pink) 100%);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom,
+        transparent,
+        var(--rose-gold-light) 10%,
+        var(--lavender-deep) 90%,
+        transparent);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 0 1.6rem 3.5rem;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      text-align: left;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      top: 0.4rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--warm-white);
+      border: 2px solid var(--rose-gold);
+      box-shadow: 0 0 0 4px rgba(212, 165, 116, 0.15);
+      z-index: 1;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot { right: -6px; transform: translateX(50%); }
+    .timeline-item:nth-child(even) .timeline-dot { left: -6px; transform: translateX(-50%); }
+
+    .timeline-date {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      color: var(--rose-gold);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .timeline-card {
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: var(--radius);
+      padding: 0;
+      overflow: hidden;
+      box-shadow: 0 4px 24px var(--shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .timeline-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px var(--shadow-hover);
+    }
+
+    .timeline-card-photo {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      min-height: 220px;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .timeline-card:hover .timeline-card-photo {
+      transform: scale(1.03);
+    }
+
+    .timeline-card-body {
+      padding: 1.2rem 1.5rem 1.4rem;
+    }
+
+    .timeline-card h3 {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+      color: var(--text);
+    }
+
+    .timeline-card p {
+      font-size: 0.88rem;
+      color: var(--text-light);
+      font-weight: 300;
+      line-height: 1.65;
+    }
+
+    /* ── Gallery ── */
+    .gallery-section {
+      background: linear-gradient(180deg, var(--pink) 0%, var(--lavender) 40%, var(--warm-white) 100%);
+      padding-bottom: 6rem;
+    }
+
+    .gallery-grid {
+      columns: 3;
+      column-gap: 1rem;
+    }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+      border-radius: 14px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+      background: var(--cream);
+      box-shadow: 0 4px 20px var(--shadow);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease, box-shadow var(--transition);
+    }
+
+    .gallery-item.loaded {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .gallery-item:hover {
+      box-shadow: 0 12px 40px var(--shadow-hover);
+    }
+
+    .gallery-item img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(92, 74, 82, 0.08) 0%, transparent 40%);
+      opacity: 0;
+      transition: opacity var(--transition);
+      pointer-events: none;
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    .gallery-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, var(--cream) 0%, var(--pink) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+    }
+
+    /* ── Videos ── */
+    .video-section {
+      background: linear-gradient(180deg, var(--warm-white) 0%, var(--lavender) 50%, var(--pink) 100%);
+      padding-bottom: 6rem;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.8rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .video-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 4px 24px var(--shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .video-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 36px var(--shadow-hover);
+    }
+
+    .video-wrap {
+      position: relative;
+      background: #2a2430;
+      aspect-ratio: 16 / 9;
+    }
+
+    .video-wrap video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #2a2430;
+    }
+
+    .video-caption {
+      padding: 1rem 1.2rem 1.2rem;
+      font-size: 0.88rem;
+      color: var(--text-light);
+      font-weight: 300;
+      text-align: center;
+      letter-spacing: 0.06em;
+    }
+
+    .video-caption strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    /* ── Quotes ── */
+    .quotes-section {
+      background: var(--warm-white);
+    }
+
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .quote-card {
+      background: linear-gradient(145deg, rgba(255,255,255,0.9) 0%, rgba(248,225,232,0.4) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius);
+      padding: 2rem 1.8rem;
+      box-shadow: 0 4px 24px var(--shadow);
+      transition: transform var(--transition), box-shadow var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-card::before {
+      content: '\201C';
+      position: absolute;
+      top: 0.5rem;
+      left: 1rem;
+      font-size: 3.5rem;
+      line-height: 1;
+      color: var(--rose-gold-light);
+      opacity: 0.5;
+      font-family: Georgia, serif;
+    }
+
+    .quote-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 36px var(--shadow-hover);
+    }
+
+    .quote-card p {
+      font-size: 0.92rem;
+      color: var(--text);
+      font-weight: 300;
+      line-height: 1.75;
+      position: relative;
+      z-index: 1;
+    }
+
+    .quote-card .quote-from {
+      margin-top: 1rem;
+      font-size: 0.78rem;
+      color: var(--rose-gold);
+      letter-spacing: 0.08em;
+      text-align: right;
+    }
+
+    /* ── Blessing ── */
+    .blessing-section {
+      background: linear-gradient(160deg,
+        var(--lavender) 0%,
+        var(--pink) 40%,
+        var(--cream) 70%,
+        var(--warm-white) 100%);
+      text-align: center;
+      padding: 6rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blessing-section::before {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(212, 165, 116, 0.12) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: blessingGlow 4s ease-in-out infinite;
+    }
+
+    @keyframes blessingGlow {
+      0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+      50%      { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+    }
+
+    .blessing-box {
+      position: relative;
+      z-index: 1;
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 3rem 2.5rem;
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 28px;
+      box-shadow: 0 8px 48px var(--shadow);
+    }
+
+    .blessing-heart {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+      animation: heartBeat 2.4s ease-in-out infinite;
+    }
+
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      15%       { transform: scale(1.12); }
+      30%       { transform: scale(1); }
+      45%       { transform: scale(1.08); }
+      60%       { transform: scale(1); }
+    }
+
+    .blessing-text {
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      font-weight: 300;
+      line-height: 2;
+      color: var(--text);
+      letter-spacing: 0.04em;
+    }
+
+    .blessing-text span {
+      display: block;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: lineReveal 0.8s ease forwards;
+    }
+
+    .blessing-text span:nth-child(1) { animation-delay: 0.3s; }
+    .blessing-text span:nth-child(2) { animation-delay: 0.7s; }
+    .blessing-text span:nth-child(3) { animation-delay: 1.1s; }
+
+    @keyframes lineReveal {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .blessing-signature {
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: var(--rose-gold);
+      letter-spacing: 0.15em;
+      opacity: 0;
+      animation: lineReveal 0.8s ease 1.5s forwards;
+    }
+
+    /* ── Letter ── */
+    .letter-section {
+      background: linear-gradient(180deg, var(--warm-white) 0%, var(--cream) 50%, var(--pink) 100%);
+      padding: 5rem 1.5rem 6rem;
+    }
+
+    .letter-paper {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 3rem 2.8rem;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: 24px;
+      box-shadow: 0 8px 40px var(--shadow);
+      position: relative;
+    }
+
+    .letter-paper::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 2rem;
+      right: 2rem;
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--rose-gold-light), var(--lavender-deep), transparent);
+      border-radius: 0 0 4px 4px;
+    }
+
+    .letter-salutation {
+      font-size: 1.05rem;
+      color: var(--text);
+      margin-bottom: 1.8rem;
+      font-weight: 400;
+    }
+
+    .letter-body p {
+      font-size: 0.95rem;
+      font-weight: 300;
+      line-height: 2.1;
+      color: var(--text);
+      margin-bottom: 1.4rem;
+      text-indent: 2em;
+      text-align: justify;
+    }
+
+    .letter-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .letter-highlight {
+      color: #B8889A;
+      font-weight: 400;
+    }
+
+    .letter-signoff {
+      margin-top: 2.5rem;
+      text-align: right;
+      font-size: 0.92rem;
+      color: var(--rose-gold);
+      letter-spacing: 0.08em;
+      line-height: 2;
+    }
+
+    .letter-signoff .letter-name {
+      font-size: 1rem;
+      font-weight: 500;
+      margin-top: 0.3rem;
+    }
+
+    .letter-date {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 640px) {
+      .letter-paper { padding: 2.2rem 1.6rem; border-radius: 18px; }
+      .letter-body p { font-size: 0.9rem; line-height: 2; }
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: linear-gradient(180deg, var(--warm-white) 0%, var(--cream-dark) 100%);
+      text-align: center;
+      padding: 3rem 1.5rem 2.5rem;
+      border-top: 1px solid rgba(212, 165, 116, 0.15);
+    }
+
+    .footer-hearts {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .footer-hearts span {
+      font-size: 1.1rem;
+      opacity: 0.7;
+      animation: heartFloat 3s ease-in-out infinite;
+    }
+
+    .footer-hearts span:nth-child(2) { animation-delay: 0.5s; }
+    .footer-hearts span:nth-child(3) { animation-delay: 1s; }
+    .footer-hearts span:nth-child(4) { animation-delay: 1.5s; }
+    .footer-hearts span:nth-child(5) { animation-delay: 2s; }
+
+    @keyframes heartFloat {
+      0%, 100% { transform: translateY(0); opacity: 0.5; }
+      50%      { transform: translateY(-6px); opacity: 1; }
+    }
+
+    .footer-text {
+      font-size: 0.82rem;
+      color: var(--text-light);
+      letter-spacing: 0.1em;
+      font-weight: 300;
+    }
+
+    .footer-text em {
+      font-style: normal;
+      color: var(--rose-gold);
+    }
+
+    /* ── Responsive ── */
+    @media (min-width: 1200px) {
+      .gallery-grid { columns: 4; }
+    }
+
+    @media (max-width: 900px) {
+      .gallery-grid { columns: 2; }
+      .quotes-grid  { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 640px) {
+      section { padding: 4rem 1.2rem; }
+
+      .video-grid { grid-template-columns: 1fr; gap: 1.4rem; }
+
+      .timeline::before { left: 1rem; }
+
+      .timeline-item,
+      .timeline-item:nth-child(odd),
+      .timeline-item:nth-child(even) {
+        width: 100%;
+        left: 0;
+        text-align: left;
+        padding: 0 0 2.5rem 2.8rem;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-dot,
+      .timeline-item:nth-child(even) .timeline-dot {
+        left: 1rem;
+        right: auto;
+        transform: translateX(-50%);
+      }
+
+      .gallery-grid { columns: 2; column-gap: 0.7rem; }
+      .gallery-item   { margin-bottom: 0.7rem; border-radius: 10px; }
+
+      .quotes-grid { grid-template-columns: 1fr; }
+
+      .blessing-box { padding: 2.2rem 1.6rem; border-radius: 20px; }
+
+      .hero-badge { font-size: 0.72rem; padding: 0.35rem 1rem; }
+    }
+
+    @media (max-width: 400px) {
+      .gallery-grid { columns: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ① 顶部 Banner -->
+  <header class="hero">
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-content">
+      <span class="hero-badge">FOR 戴童瑶</span>
+      <h1 class="hero-title">瑶瑶，生日快乐</h1>
+      <p class="hero-subtitle">第三个生日 · 故事的开始是你，结束也是你</p>
+      <div class="hero-divider"></div>
+      <p class="hero-date" id="heroDate"></p>
+    </div>
+    <div class="scroll-hint">
+      <span>向下滑动</span>
+      <div class="scroll-hint-line"></div>
+    </div>
+  </header>
+
+  <!-- ② 恋爱时光轴 -->
+  <section class="timeline-section">
+    <div class="section-inner">
+      <span class="section-label reveal">Our Story</span>
+      <h2 class="section-title reveal">我们的甜蜜时光</h2>
+      <p class="section-desc reveal">每一个值得纪念的日子，都是 love story 里最美的章节</p>
+      <div class="timeline" id="timeline"></div>
+    </div>
+  </section>
+
+  <!-- ③ 照片相册墙 -->
+  <section class="gallery-section">
+    <div class="section-inner">
+      <span class="section-label reveal">Memories</span>
+      <h2 class="section-title reveal">我们的相册</h2>
+      <p class="section-desc reveal">每一帧，都是心动的证据 · <span id="galleryCount"></span></p>
+      <div class="gallery-grid" id="gallery"></div>
+    </div>
+  </section>
+
+  <!-- ④ 甜蜜视频 -->
+  <section class="video-section">
+    <div class="section-inner">
+      <span class="section-label reveal">Our Videos</span>
+      <h2 class="section-title reveal">我们的视频</h2>
+      <p class="section-desc reveal">有些瞬间，照片装不下，只好用视频留住</p>
+      <div class="video-grid" id="videos"></div>
+    </div>
+  </section>
+
+  <!-- ⑤ 甜蜜语录 -->
+  <section class="quotes-section">
+    <div class="section-inner">
+      <span class="section-label reveal">Sweet Words</span>
+      <h2 class="section-title reveal">想对你说的话</h2>
+      <p class="section-desc reveal">藏在心底的话，今天全部说给你听</p>
+      <div class="quotes-grid" id="quotes"></div>
+    </div>
+  </section>
+
+  <!-- ⑥ 生日惊喜祝福 -->
+  <section class="blessing-section">
+    <div class="blessing-box reveal">
+      <div class="blessing-heart">♥</div>
+      <div class="blessing-text" id="blessing"></div>
+      <p class="blessing-signature" id="signature"></p>
+    </div>
+  </section>
+
+  <!-- ⑦ 小鹏鹏的小作文 -->
+  <section class="letter-section">
+    <div class="section-inner">
+      <span class="section-label reveal">A Letter For You</span>
+      <h2 class="section-title reveal">写给宝宝的话</h2>
+      <p class="section-desc reveal">清晨惊醒写下这些，因为梦里的新娘是你</p>
+      <article class="letter-paper reveal" id="letter"></article>
+    </div>
+  </section>
+
+  <!-- ⑧ 底部 Footer -->
+  <footer>
+    <div class="footer-hearts">
+      <span>♥</span><span>♥</span><span>♥</span><span>♥</span><span>♥</span>
+    </div>
+    <p class="footer-text">Made with <em>love</em> · 视童瑶为珍宝的小鹏鹏</p>
+  </footer>
+
+  <script>
+    /* ═══════════════════════════════════════════
+       ✦ 自定义配置区 — 修改以下内容即可个性化 ✦
+       ═══════════════════════════════════════════ */
+
+    const CONFIG = {
+      // 顶部日期显示
+      heroDate: '2026 · 戴童瑶的生日',
+
+      // 时光轴（可自由增删，image 为对应照片文件名）
+      timeline: [
+        { date: '2024.03', title: '初次相遇', text: '那个三月，童瑶走进我的生命。从第一眼起，我就知道，这个人会很重要。', image: 'mmexport1713366880071.jpg' },
+        { date: '2024.04.17', title: '在一起', text: '4 月 17 日，你说好的那一刻，是我听过最美的承诺。从那天起，我的世界有了专属的名字——童瑶。', image: 'IMG_20240419_221349.jpg' },
+        { date: '2024.10', title: '一起走过的日子', text: '牵着手走过春夏秋冬，有你在的地方，就是我最想停留的地方。', image: '4.jpg' },
+        { date: '2025.04.17', title: '一周年', text: '365 个日夜，每一天都比前一天更爱你一点。谢谢你，童瑶。', image: '5.jpg' },
+        { date: '2026.06.01', title: '第三个生日', text: '大学时光即将谢幕，我们的第三个生日如期而至。今天，全世界最闪耀的人——是我的瑶瑶宝贝。', image: 'mmexport1755259513846.jpg' }
+      ],
+
+      // 相册图片列表（按时间顺序，共 120 张）
+      photos: [
+        '1.jpg',
+        'mmexport1712337960647.jpg',
+        'mmexport1713366880071.jpg',
+        'mmexport1713544476306.jpg',
+        'mmexport1713544481831.jpg',
+        'mmexport1713971835990.jpg',
+        'mmexport1714401493969.jpg',
+        'Image_1715788413229.jpg',
+        'Image_1715788419325.jpg',
+        'Image_1715788432608.jpg',
+        'mmexport1716111971465.jpg',
+        'mmexport1719501895436.jpg',
+        'mmexport1720353684402.jpg',
+        'mmexport1720712565674.jpg',
+        'mmexport1722005655560.jpg',
+        'mmexport1726394875877.png',
+        'mmexport1726496545320.jpg',
+        'mmexport1726496548004.jpg',
+        'mmexport1730605345307.jpg',
+        'mmexport1733568564904.jpg',
+        'mmexport1733660254049.jpg',
+        'mmexport1733660258006.jpg',
+        'mmexport1740237909120.jpg',
+        'mmexport1740842157136.jpg',
+        'mmexport1741443429424.jpg',
+        'mmexport1742114627095.jpg',
+        'mmexport1742742853811.jpg',
+        'mmexport1744208127309.jpg',
+        'mmexport1744208128251.jpg',
+        'mmexport1746335280746.jpg',
+        'mmexport1746512606334.jpg',
+        'wx_camera_1746763905744.jpg',
+        'mmexport1748600723032.jpg',
+        'mmexport1748600732603.jpg',
+        'mmexport1752657982016.jpg',
+        'mmexport1753927762381.jpg',
+        'mmexport1754053114952.jpg',
+        'mmexport1754060472431.jpg',
+        'mmexport1754060474373.jpg',
+        'mmexport1754064938493.jpg',
+        'mmexport1754122552025.jpg',
+        'mmexport1754122559166.jpg',
+        'mmexport1754657134104.jpg',
+        'mmexport1755259513846.jpg',
+        'mmexport1755259520154.jpg',
+        'mmexport1763609877436.jpg',
+        'wx_camera_1767086718443.jpg',
+        'mmexport1771297681687.jpg',
+        'mmexport1775998066061.jpg',
+        'mmexport1777257374889.jpg',
+        'mmexport1777257376243.jpg',
+        'IMG_20240419_221349.jpg',
+        'IMG_20240509_165325.jpg',
+        'IMG_20240519_104331.jpg',
+        'IMG_20240601_185755.jpg',
+        'IMG_20240622_161604.jpg',
+        'IMG_20240709_193026.jpg',
+        'Screenshot_20240718_234759_com.tencent.mm.jpg',
+        'IMG_20240911_182916.jpg',
+        'IMG_20240916_185536.jpg',
+        'IMG_20241015_160541.jpg',
+        'IMG_20250112_105742.jpg',
+        'IMG_20250301_140550.jpg',
+        'IMG_20250321_162547.jpg',
+        'IMG_20250322_191434.jpg',
+        'IMG_20250322_191439(1).jpg',
+        'IMG_20250322_161822.jpg',
+        'IMG_20250322_191439.jpg',
+        'IMG_20250323_125016.jpg',
+        'IMG_20250501_105736.jpg',
+        'IMG_20250501_105809.jpg',
+        'IMG_20250501_105742.jpg',
+        'IMG_20250501_105739.jpg',
+        'IMG_20250501_103936.jpg',
+        'IMG_20250502_203550.jpg',
+        'IMG_20250502_203548.jpg',
+        'IMG_20250502_110538.jpg',
+        'IMG_20250503_190456.jpg',
+        'IMG_20250509_121042.jpg',
+        'IMG_20250605_132039.jpg',
+        'IMG_20250710_204323.jpg',
+        'IMG_20250711_104954.jpg',
+        'IMG_20250711_104924.jpg',
+        'IMG_20250831_174522.jpg',
+        'IMG_20251024_150424.jpg',
+        'IMG_20251122_173912.jpg',
+        'IMG_20251125_195145.jpg',
+        'IMG_20251125_195143.jpg',
+        'IMG_20251213_205705.jpg',
+        'IMG_20251213_191703.jpg',
+        'IMG_20251213_185147.jpg',
+        'IMG_20251219_184145.jpg',
+        'IMG_20251219_180926.jpg',
+        'IMG_20251219_180923.jpg',
+        'IMG_20251224_211109.jpg',
+        'IMG_20251227_091243.jpg',
+        'IMG_20251228_184832.jpg',
+        'IMG_20260107_131654.jpg',
+        'IMG_20260107_131841.jpg',
+        'IMG_20260107_192852.jpg',
+        'IMG_20260107_131637.jpg',
+        'IMG_20260107_124512.jpg',
+        'IMG_20260107_131502.jpg',
+        'IMG_20260108_114702.jpg',
+        'IMG_20260108_115011.jpg',
+        'IMG_20260108_114151.jpg',
+        'IMG_20260108_112312.jpg',
+        'IMG_20260416_142509.jpg',
+        'IMG_20260416_142525.jpg',
+        'IMG_20260416_142522.jpg',
+        'IMG_20260421_175823.jpg',
+        'IMG_20260422_075429.jpg',
+        'IMG_20260502_213310.jpg',
+        'IMG_20260503_224303.jpg',
+        'IMG_20260503_224249.jpg',
+        'IMG_20260503_222437.jpg',
+        'IMG_20260514_162101.jpg',
+        'IMG_20260514_153748.jpg',
+        'IMG_20260530_210309.jpg',
+        'IMG_20260530_152433.jpg'
+      ],
+
+
+      // 视频列表（src 为 images 文件夹内的文件名）
+      videos: [
+        { src: 'video_20260104_143131.mp4', title: '2026.01 · 我们的瞬间' },
+        { src: 'video_20260409_210806.mp4', title: '2026.04 · 甜蜜回忆' },
+        { src: 'mmexport1779412454559.mp4', title: '在一起的日常' }
+      ],
+
+      // 甜蜜语录
+      quotes: [
+        { text: '希望故事的开始是你，结束也是你。', from: '— 关于未来' },
+        { text: '昨晚梦见我们结婚了，新娘是你——给我开心到惊醒。', from: '— 一个美梦' },
+        { text: '你想让我怎么做，可以直接说。我永远是你最坚强的后盾。', from: '— 期末加油' },
+        { text: '彼此多一点包容，多一份理解，是我们最好的答案。', from: '— 一路走来' },
+        { text: '虽然才两年，却已有「一日不见，如隔三秋」的感觉。', from: '— 每一天' },
+        { text: '视你为珍宝——这不是情话，是事实。', from: '— 小鹏鹏' }
+      ],
+
+      // 生日祝福（每行一句）
+      blessing: [
+        '瑶瑶宝贝，第三个生日快乐。',
+        '大学时光即将谢幕，我们的故事还在上演。',
+        '往下读，是我写给你的心里话——',
+      ],
+
+      signature: '—— 视你为珍宝的小鹏鹏',
+
+      // 小作文
+      letter: {
+        salutation: '亲爱的瑶瑶宝贝：',
+        paragraphs: [
+          '一晃眼，大学生涯马上就要结束了，我们也迎来了一起度过的<span class="letter-highlight">第三个生日</span>。首先，祝宝宝生日快乐！也谢谢你在这两年多来的关心与爱护。',
+          '你知道吗？今天早上我第一件事就是给你发完消息，然后就来写这篇小作文了——因为我被梦<span class="letter-highlight">开心到惊醒</span>。昨晚我梦见我们结婚了，新娘是你！给我开心美了～希望故事的开始是你，结束也是你。',
+          '现在临近期末，看宝宝焦虑着急，我内心特别难受。虽然有时候感觉有点无能为力，不知道能为宝宝做点什么，但你想让我怎么做，可以直接告诉我。<span class="letter-highlight">我永远是你最坚强的后盾。</span>',
+          '这一路走来也不容易，有过小吵小闹，也有过发脾气，但最终都以欢笑声收场。彼此多一点包容、多一份理解，是我们最好的答案。你知道我文采一般，就将就看，别嫌弃我哦！总的来说，在一起的这两年，我还是很开心的——虽然才两年，却已有「一日不见，如隔三秋」的感觉。我希望，有我的日子，宝宝也同样开心！',
+          '最后，请允许我代表鹏鹏公举，再次祝宝宝：生日快乐，幸福安康！期末考试顺顺利利，教资快快过——你也快快保佑我一次过！也祝包子入党顺顺利利，不过你也得保佑我拿个国家奖学金哦，哈哈哈哈！',
+          '爱你哦，宝贝～'
+        ],
+        signoff: '视你为珍宝的小鹏鹏',
+        date: '2026.5.31 · 10:49'
+      }
+    };
+
+    /* ═══════════════════════════════════════════
+       渲染逻辑（一般无需修改）
+       ═══════════════════════════════════════════ */
+
+    // Hero 日期
+    document.getElementById('heroDate').textContent = CONFIG.heroDate;
+
+    // 粒子背景
+    (function initParticles() {
+      const container = document.getElementById('particles');
+      for (let i = 0; i < 18; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.animationDuration = (8 + Math.random() * 12) + 's';
+        p.style.animationDelay = Math.random() * 10 + 's';
+        p.style.width = p.style.height = (3 + Math.random() * 5) + 'px';
+        container.appendChild(p);
+      }
+    })();
+
+    // 时光轴
+    (function renderTimeline() {
+      const el = document.getElementById('timeline');
+      CONFIG.timeline.forEach(function (item, i) {
+        const div = document.createElement('div');
+        div.className = 'timeline-item reveal';
+        div.style.transitionDelay = (i * 0.12) + 's';
+
+        let cardHtml = '';
+        if (item.image) {
+          cardHtml += '<img class="timeline-card-photo" src="./images/' + encodeURI(item.image) + '" alt="' + item.title + '" loading="lazy">';
+        }
+        cardHtml += '<div class="timeline-card-body">' +
+          '<h3>' + item.title + '</h3>' +
+          '<p>' + item.text + '</p>' +
+        '</div>';
+
+        div.innerHTML =
+          '<div class="timeline-dot"></div>' +
+          '<div class="timeline-date">' + item.date + '</div>' +
+          '<div class="timeline-card">' + cardHtml + '</div>';
+        el.appendChild(div);
+      });
+    })();
+
+    // 相册墙（懒加载）
+    (function renderGallery() {
+      const el = document.getElementById('gallery');
+      const photos = CONFIG.photos || [];
+      const countEl = document.getElementById('galleryCount');
+      if (countEl) countEl.textContent = photos.length + ' 张回忆';
+
+      photos.forEach(function (filename, i) {
+        const item = document.createElement('div');
+        item.className = 'gallery-item';
+        item.style.transitionDelay = (i % 15) * 0.04 + 's';
+
+        const img = document.createElement('img');
+        img.alt = '童瑶 · 我们的回忆 ' + (i + 1);
+        img.loading = 'lazy';
+        img.dataset.src = './images/' + encodeURI(filename);
+
+        img.addEventListener('load', function () {
+          item.classList.add('loaded');
+        });
+
+        img.addEventListener('error', function () {
+          item.innerHTML = '<div class="gallery-placeholder">' + filename + '</div>';
+          item.classList.add('loaded');
+        });
+
+        item.appendChild(img);
+        el.appendChild(item);
+      });
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              const img = entry.target;
+              if (img.dataset.src) {
+                img.src = img.dataset.src;
+                delete img.dataset.src;
+              }
+              observer.unobserve(img);
+            }
+          });
+        }, { rootMargin: '300px' });
+
+        el.querySelectorAll('img[data-src]').forEach(function (img) {
+          observer.observe(img);
+        });
+      } else {
+        el.querySelectorAll('img[data-src]').forEach(function (img) {
+          img.src = img.dataset.src;
+        });
+      }
+    })();
+
+    // 视频区（懒加载，滚动到附近才加载）
+    (function renderVideos() {
+      const el = document.getElementById('videos');
+      if (!el || !CONFIG.videos) return;
+
+      CONFIG.videos.forEach(function (item, i) {
+        const card = document.createElement('div');
+        card.className = 'video-card reveal';
+        card.style.transitionDelay = (i * 0.12) + 's';
+
+        const wrap = document.createElement('div');
+        wrap.className = 'video-wrap';
+
+        const video = document.createElement('video');
+        video.controls = true;
+        video.playsInline = true;
+        video.preload = 'none';
+        video.setAttribute('playsinline', '');
+        video.dataset.src = './images/' + encodeURI(item.src);
+
+        wrap.appendChild(video);
+
+        const caption = document.createElement('div');
+        caption.className = 'video-caption';
+        caption.innerHTML = '<strong>' + item.title + '</strong>点击播放 · 记得开声音哦';
+
+        card.appendChild(wrap);
+        card.appendChild(caption);
+        el.appendChild(card);
+      });
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              const video = entry.target;
+              if (video.dataset.src && !video.src) {
+                video.src = video.dataset.src;
+                delete video.dataset.src;
+              }
+              observer.unobserve(video);
+            }
+          });
+        }, { rootMargin: '200px' });
+
+        el.querySelectorAll('video[data-src]').forEach(function (v) {
+          observer.observe(v);
+        });
+      } else {
+        el.querySelectorAll('video[data-src]').forEach(function (v) {
+          v.src = v.dataset.src;
+        });
+      }
+    })();
+
+    // 语录卡片
+    (function renderQuotes() {
+      const el = document.getElementById('quotes');
+      CONFIG.quotes.forEach(function (q, i) {
+        const card = document.createElement('div');
+        card.className = 'quote-card reveal';
+        card.style.transitionDelay = (i * 0.1) + 's';
+        card.innerHTML =
+          '<p>' + q.text + '</p>' +
+          '<div class="quote-from">' + q.from + '</div>';
+        el.appendChild(card);
+      });
+    })();
+
+    // 生日祝福
+    (function renderBlessing() {
+      const el = document.getElementById('blessing');
+      CONFIG.blessing.forEach(function (line) {
+        const span = document.createElement('span');
+        span.textContent = line;
+        el.appendChild(span);
+      });
+      document.getElementById('signature').textContent = CONFIG.signature;
+    })();
+
+    // 小作文
+    (function renderLetter() {
+      const el = document.getElementById('letter');
+      const letter = CONFIG.letter;
+      if (!letter || !el) return;
+
+      let html = '<p class="letter-salutation">' + letter.salutation + '</p><div class="letter-body">';
+      letter.paragraphs.forEach(function (para) {
+        html += '<p>' + para + '</p>';
+      });
+      html += '</div><div class="letter-signoff">';
+      html += '<div class="letter-name">' + letter.signoff + '</div>';
+      html += '<div class="letter-date">' + letter.date + '</div>';
+      html += '</div>';
+      el.innerHTML = html;
+    })();
+
+    // 滚动显现动画
+    (function initReveal() {
+      const reveals = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        reveals.forEach(function (el) { observer.observe(el); });
+      } else {
+        reveals.forEach(function (el) { el.classList.add('visible'); });
+      }
+    })();
+  </script>
+</body>
+</html>
